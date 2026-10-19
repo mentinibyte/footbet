@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#07151d" />
+  <meta name="description" content="تحلیل آماری و پیگیری زندهٔ مسابقات فوتبال." />
+  <title>بازی‌خوان | تحلیل زندهٔ فوتبال</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="integration.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#top"><span class="brand-mark">ب</span><span>بازی<span class="brand-light">‌خوان</span></span></a>
+      <div class="side-label">منوی اصلی</div>
+      <nav class="side-nav" aria-label="منوی اصلی">
+        <a class="nav-link active" href="#matches"><span class="nav-icon">▦</span>بازی‌ها <span class="nav-count" id="nav-count">۰</span></a>
+        <a class="nav-link" href="#insights"><span class="nav-icon">◉</span>تحلیل‌ها</a>
+        <a class="nav-link" href="#method"><span class="nav-icon">⌁</span>روش کار</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="responsible-card"><span class="responsible-icon">✓</span><div><strong>مسئولانه بازی کنید</strong><p>شرط‌بندی ریسک مالی دارد. فقط در حد توانتان.</p></div></div>
+        <div class="sidebar-foot" id="sidebar-foot">در حال آماده‌سازی داده‌ها <span class="demo-dot"></span></div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="top">
+      <header class="topbar">
+        <a class="mobile-brand" href="#top"><span class="brand-mark">ب</span> بازی‌خوان</a>
+        <div class="date-label"><span class="calendar-icon">▦</span><span id="today-date">امروز</span></div>
+        <div class="topbar-actions"><span class="data-badge" id="data-badge"><i></i>در حال اتصال…</span><button class="settings-button" id="settings-button" type="button" aria-label="تنظیمات تحلیل هوش مصنوعی" title="تنظیمات هوش مصنوعی">⚙</button></div>
+      </header>
+
+      <section class="intro" id="matches">
+        <div><div class="eyebrow"><span class="live-pulse"></span>مرکز تحلیل مسابقات</div><h1 id="day-title">مسابقات امروز</h1><p>احتمال‌های آماری با دادهٔ مسابقات و وضعیت زنده به‌روزرسانی می‌شوند.</p></div>
+        <label class="date-picker"><span>▦</span><select id="day-select" aria-label="انتخاب روز"><option>امروز</option></select></label>
+      </section>
+
+      <section class="summary-grid" aria-label="خلاصهٔ مسابقات">
+        <article class="summary-card"><div class="summary-top"><span>بازی‌های این روز</span><span class="summary-icon blue">▦</span></div><strong id="sum-matches">۰</strong><small id="sum-leagues">در ۰ لیگ</small><div class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+        <article class="summary-card"><div class="summary-top"><span>پیشنهادهای مدل</span><span class="summary-icon gold">✦</span></div><strong id="sum-picks">۰</strong><small id="sum-picks-note">احتمال ≥ ۵۸٪ در یکی از بازارها</small><div class="summary-trend">برآورد آماری، نه تضمین نتیجه</div></article>
+        <article class="summary-card"><div class="summary-top"><span>میانگین احتمال پیشنهادها</span><span class="summary-icon green">◉</span></div><strong id="sum-conf">۰<small class="percent">٪</small></strong><small>برای پیشنهادهای همین روز</small><div class="progress"><i id="sum-conf-bar" style="width:0"></i></div></article>
+      </section>
+
+      <section class="match-section" id="insights">
+        <div class="section-heading"><div><h2>مسابقات</h2><p>زمان آخرین دریافت در نشان وضعیت بالای صفحه آمده است.</p></div><button class="sort-button" id="sort-button" type="button">مرتب‌سازی: شروع بازی <span>⌄</span></button></div>
+        <div class="filters" role="group" aria-label="فیلتر مسابقات">
+          <button class="filter active" data-filter="all" type="button">همهٔ بازی‌ها <span id="filter-all">۰</span></button>
+          <button class="filter" data-filter="suggested" type="button">پیشنهاد ویژه <span id="filter-suggested">۰</span></button>
+          <button class="filter" data-filter="live" type="button">زنده <span id="filter-live">۰</span></button>
+          <div class="league-filter"><span>لیگ:</span><select id="league-select" aria-label="انتخاب لیگ"><option value="all">همهٔ لیگ‌ها</option><option value="eng.1">لیگ برتر انگلیس</option><option value="esp.1">لالیگا</option><option value="ita.1">سری آ</option><option value="ger.1">بوندس‌لیگا</option><option value="fra.1">لیگ ۱</option></select></div>
+        </div>
+        <div class="match-list" id="match-list" aria-live="polite"><div class="empty-state">در حال دریافت مسابقات و آماده‌سازی مدل…</div></div>
+        <button class="load-more" id="load-more" type="button" hidden>نمایش بازی‌های بیشتر <span>⌄</span></button>
+      </section>
+
+      <section class="method-panel" id="method"><div class="method-icon">i</div><div><strong>دربارهٔ مدل و احتمال‌ها</strong><div id="method-body"><p>مدل Dixon–Coles از نتایج تاریخی برای تخمین گل و احتمال بازارها استفاده می‌کند. اگر ضرایب موجود باشند، مدل با احتمال ضمنی بازار ترکیب می‌شود. این برآوردها تضمین نتیجه یا سود نیستند.</p></div></div></section>
+      <footer>بازی‌خوان · دادهٔ مسابقات از ESPN و تاریخچه از Football-Data.co.uk <span>۱۸+ · شرط‌بندی می‌تواند اعتیادآور و زیان‌بار باشد.</span></footer>
+    </main>
+  </div>
+
+  <dialog class="settings-dialog" id="ai-dialog" aria-labelledby="ai-title">
+    <form method="dialog" id="ai-form" class="settings-form">
+      <button class="dialog-close" value="cancel" aria-label="بستن">×</button>
+      <div class="eyebrow">تحلیل تکمیلی مسابقه</div><h2 id="ai-title">تنظیم Claude</h2>
+      <p>برای جست‌وجوی خبرهای جدید، کلید API شخصی Anthropic را وارد کنید. این قابلیت اختیاری است؛ پیش‌بینی اصلی با مدل آماری محلی انجام می‌شود.</p>
+      <label for="ai-key">کلید API</label><input id="ai-key" type="password" autocomplete="off" placeholder="sk-ant-…" />
+      <div class="dialog-actions"><button class="save-button" value="save">ذخیرهٔ تنظیمات</button><button class="clear-button" id="clear-key" type="button">حذف کلید</button></div>
+    </form>
+  </dialog>
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="data/history.js"></script>
+  <script src="js/model.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/ai.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
